@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "EmployeeInfo";
+}
+
+<head>
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqgrid")
+    @Scripts.Render("~/bundles/jqplot")
+</head>
+
+<style>
+    .text-info{
+        position:absolute;
+        left:20px;
+        top:20px;
+        color:#178fe5;
+        font-size:24px;
+        font-weight:bold;
+    }
+    .tab-position{
+        position:absolute;
+        left:20%;
+        top:20%;
+    }
+</style>
+
+<div class="text-info">@ViewData["data"]</div>
+<div class="tab-position">
+    <table id="tableEmpl"></table>
+    <div id="pagerEmp"></div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+
+        $("#tableEmpl").jqGrid({
+            url: '@Url.Action("GetDataToTable", "Employee", new { area = "TransportCompany" })',
+            datatype: 'json',
+            mtype: 'POST',
+            colNames: ['EmpId', 'Name', 'Surname', 'Place of residence', 'Gender', 'Age'],
+            colModel: [
+                { name: 'EmpId', index: 'EmpId', width: 10, sortable: true, align: 'center', hidden:true },
+                { name: 'Name', index: 'Name', width: 150, sortable: true, align: 'center' },
+                { name: 'Surname', index: 'Surname', width: 150, sortable: true, align: 'center' },
+                { name: 'PlaceOfResidence', index: 'PlaceOfResidence', width: 150, sortable: true, align: 'center' },
+                { name: 'Gender', index: 'Gender', width: 150, sortable: true, align: 'center' },
+                { name: 'Age', index: 'Age', width: 100, sortable: true, align: 'center' },
+            ],
+            jsonReader: {
+                root: "rows",
+                page: "page",
+                total: "total",
+                records: "records",
+                repeatitems: false,
+                Id : "0"
+            },
+            pager: '#pagerEmp',
+            viewrecords :true,
+            rowNum: 20,
+            rowList: [20, 40, 60, 80],
+            sortname: 'Id',
+            sortorder: "asc",
+            shrinkToFit: true,
+            subGrid:true,
+            width: 900,
+            height: 'auto',
+            caption: 'Employee information',
+            subGridRowExpanded: function (subgridDivId, rowId) {
+                celValue = $("#tableEmpl").jqGrid('getCell', rowId, 'EmpId');
+                $('#tableEmpl_' + rowId).load('@Url.Action("SubGridEmployeeInfo", "Employee", new { area = "TransportCompany" })' + '/' + celValue);
+            },
+        });
+
+    });
+</script>

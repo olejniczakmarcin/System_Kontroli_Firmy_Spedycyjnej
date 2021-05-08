@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FirmaSpedycyjnaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cars">
+    <Key>
+      <PropertyRef Name="CarId" />
+    </Key>
+    <Property Name="CarId" Type="int" Nullable="false" />
+    <Property Name="EmpId" Type="int" Nullable="false" />
+    <Property Name="CarName" Type="varchar" MaxLength="50" />
+    <Property Name="Millage" Type="int" />
+    <Property Name="VehicleCondition" Type="varchar" MaxLength="50" />
+    <Property Name="CurrentResearch" Type="bit" />
+  </EntityType>
+  <EntityType Name="Contractor">
+    <Key>
+      <PropertyRef Name="ContractorId" />
+    </Key>
+    <Property Name="ContractorId" Type="int" Nullable="false" />
+    <Property Name="ContractorName" Type="varchar" MaxLength="50" />
+    <Property Name="ContractorHeadQuarters" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmpId" />
+    </Key>
+    <Property Name="EmpId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Surname" Type="varchar" MaxLength="50" />
+    <Property Name="PlaceOfResidence" Type="varchar" MaxLength="50" />
+    <Property Name="Gender" Type="varchar" MaxLength="50" />
+    <Property Name="Age" Type="int" />
+  </EntityType>
+  <EntityType Name="EmployeeSection">
+    <Key>
+      <PropertyRef Name="SectionId" />
+    </Key>
+    <Property Name="SectionId" Type="int" Nullable="false" />
+    <Property Name="EmplId" Type="int" Nullable="false" />
+    <Property Name="SectionName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'FirmaSpedycyjna.dbo.Meetings' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Meetings">
+    <Key>
+      <PropertyRef Name="MeetId" />
+      <PropertyRef Name="ContractorId" />
+    </Key>
+    <Property Name="MeetId" Type="int" Nullable="false" />
+    <Property Name="ContractorId" Type="int" Nullable="false" />
+    <Property Name="DateOfMeeting" Type="varchar" MaxLength="50" />
+    <Property Name="PlaceOfMeeting" Type="varchar" MaxLength="50" />
+    <Property Name="IsOnline" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="TransportCount">
+    <Key>
+      <PropertyRef Name="TransportId" />
+    </Key>
+    <Property Name="TransportId" Type="int" Nullable="false" />
+    <Property Name="Year" Type="int" />
+    <Property Name="Month" Type="int" />
+    <Property Name="TransportCount" Type="int" />
+  </EntityType>
+  <EntityContainer Name="FirmaSpedycyjnaModelStoreContainer">
+    <EntitySet Name="Cars" EntityType="Self.Cars" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contractor" EntityType="Self.Contractor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeSection" EntityType="Self.EmployeeSection" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransportCount" EntityType="Self.TransportCount" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Meetings" EntityType="Self.Meetings" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Meetings].[MeetId] AS [MeetId], 
+    [Meetings].[ContractorId] AS [ContractorId], 
+    [Meetings].[DateOfMeeting] AS [DateOfMeeting], 
+    [Meetings].[PlaceOfMeeting] AS [PlaceOfMeeting], 
+    [Meetings].[IsOnline] AS [IsOnline]
+    FROM [dbo].[Meetings] AS [Meetings]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

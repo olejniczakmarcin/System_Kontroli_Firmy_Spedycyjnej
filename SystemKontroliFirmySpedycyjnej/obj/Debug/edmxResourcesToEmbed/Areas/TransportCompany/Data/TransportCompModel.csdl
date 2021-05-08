@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FirmaSpedycyjnaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cars">
+    <Key>
+      <PropertyRef Name="CarId" />
+    </Key>
+    <Property Name="CarId" Type="Int32" Nullable="false" />
+    <Property Name="EmpId" Type="Int32" Nullable="false" />
+    <Property Name="CarName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Millage" Type="Int32" />
+    <Property Name="VehicleCondition" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CurrentResearch" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmpId" />
+    </Key>
+    <Property Name="EmpId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PlaceOfResidence" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Age" Type="Int32" />
+  </EntityType>
+  <EntityType Name="EmployeeSection">
+    <Key>
+      <PropertyRef Name="SectionId" />
+    </Key>
+    <Property Name="SectionId" Type="Int32" Nullable="false" />
+    <Property Name="EmplId" Type="Int32" Nullable="false" />
+    <Property Name="SectionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="FirmaSpedycyjnaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cars" EntityType="Self.Cars" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" />
+    <EntitySet Name="EmployeeSection" EntityType="Self.EmployeeSection" />
+    <EntitySet Name="Contractor" EntityType="FirmaSpedycyjnaModel.Contractor" />
+    <EntitySet Name="Meetings" EntityType="FirmaSpedycyjnaModel.Meetings" />
+    <EntitySet Name="TransportCount" EntityType="FirmaSpedycyjnaModel.TransportCount" />
+  </EntityContainer>
+  <EntityType Name="Contractor">
+    <Key>
+      <PropertyRef Name="ContractorId" />
+    </Key>
+    <Property Name="ContractorId" Type="Int32" Nullable="false" />
+    <Property Name="ContractorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ContractorHeadQuarters" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Meetings">
+    <Key>
+      <PropertyRef Name="MeetId" />
+      <PropertyRef Name="ContractorId" />
+    </Key>
+    <Property Name="MeetId" Type="Int32" Nullable="false" />
+    <Property Name="ContractorId" Type="Int32" Nullable="false" />
+    <Property Name="DateOfMeeting" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PlaceOfMeeting" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsOnline" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TransportCount">
+    <Key>
+      <PropertyRef Name="TransportId" />
+    </Key>
+    <Property Name="TransportId" Type="Int32" Nullable="false" />
+    <Property Name="Year" Type="Int32" />
+    <Property Name="Month" Type="Int32" />
+    <Property Name="TransportCount1" Type="Int32" />
+  </EntityType>
+</Schema>

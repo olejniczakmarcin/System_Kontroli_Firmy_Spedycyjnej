@@ -1,0 +1,67 @@
+﻿@model int
+@{
+    ViewBag.Title = "SubGridEmployeeInfo";
+}
+
+<head>
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqgrid")
+    @Scripts.Render("~/bundles/jqplot")
+</head>
+
+<div>
+    <table id="tableEmplSubGrid"></table>
+</div>
+
+<script type="text/javascript">
+
+    function FormatterCurrentResearch(cellvalue, options, rowObject) {
+        var retval = cellvalue;
+        if (rowObject['CurrentResearch'] == true) {
+            return 'Actual';
+        }
+        else {
+            return 'No actual'
+        }
+    }
+
+    $(function () {
+
+        $("#tableEmplSubGrid").jqGrid({
+            url: '@Url.Action("SubGridGetDataToTable", "Employee", new { area = "TransportCompany" })' + '/' + @Model,
+            datatype: 'json',
+            mtype: 'POST',
+            colNames: ['CarId', 'EmpId', 'Car name', 'Millage', 'Vehicle condition', 'Current research'],
+            colModel: [
+                { name: 'CarId', index: 'CarId', width: 10, sortable: true, align: 'center', hidden:true },
+                { name: 'EmpId', index: 'EmpId', width: 150, sortable: true, align: 'center', hidden:true },
+                { name: 'Name', index: 'Name', width: 150, sortable: true, align: 'center' },
+                { name: 'Millage', index: 'Millage', width: 150, sortable: true, align: 'center' },
+                { name: 'VehicleCondition', index: 'VehicleCondition', width: 150, sortable: true, align: 'center' },
+                { name: 'CurrentResearch', index: 'CurrentResearch', width: 100, sortable: true, align: 'center', formatter: FormatterCurrentResearch },
+            ],
+            jsonReader: {
+                root: "rows",
+                page: "page",
+                total: "total",
+                records: "records",
+                repeatitems: false,
+                Id : "0"
+            },
+            viewrecords :true,
+            rowNum: 20,
+            rowList: [20, 40, 60, 80],
+            sortname: 'Id',
+            sortorder: "asc",
+            shrinkToFit: true,
+            subGrid:false,
+            width: 870,
+            height: 'auto',
+            caption: 'Employee additional information',
+        });
+
+    });
+</script>
+

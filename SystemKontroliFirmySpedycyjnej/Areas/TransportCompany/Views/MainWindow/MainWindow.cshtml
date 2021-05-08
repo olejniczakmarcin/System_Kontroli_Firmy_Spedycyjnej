@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewBag.Title = "MainWindow";
+}
+
+<head>
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqgrid")
+    @Scripts.Render("~/bundles/jqplot")
+</head>
+<style>
+    .jqplot-target {
+        color: #ff0000;
+    }
+    .topleft {
+        position: absolute;
+        top: 24px;
+        left: 36px;
+        font-size: 28px;
+        color: lightskyblue
+    }
+    .center {
+        position: absolute;
+        top: 1%;
+        width: 100%;
+        text-align: center;
+        font-size: 28px;
+        color: lightskyblue;
+    }
+</style>
+
+<div class="center"><strong>Menagement center</strong></div>
+<div class="topleft"><strong>@ViewData["data"]</strong></div>
+<div style="left: 350px; bottom: 810px; position:absolute;"><strong style="color:wheat">Company result in transport</strong></div>
+<div id="chartdiv" style="height:300px;width:600px; left:400px; bottom:490px; position:absolute;"></div>
+<div style="position:absolute; bottom:250px; left:300px;">
+    <table id="meetingsTable"></table>
+    <div id="pagerMeet"></div>
+</div>
+
+<script type="text/javascript">
+
+    function FormatterIsOnline(cellvalue, options, rowObject) {
+        var retval = cellvalue;
+        if (rowObject['IsOnline'] == true) {
+            return 'Online';
+        }
+        else {
+            return 'In company'
+        }
+    }
+
+    $(function () {
+
+        $.post('@Url.Action("GetChartData", "MainWindow", new { area = "TransportCompany"})', {id:2020}, function (data) {
+            if (data.status) {
+                $.jqplot('chartdiv', [ data.dataM2]);
+            }
+            else {
+                alert("NO DATA TO GRAPH");
+            }
+        });
+
+        $("#meetingsTable").jqGrid({
+            url: '@Url.Action("GetDataToTable", "MainWindow", new { area = "TransportCompany" })',
+            datatype: 'json',
+            mtype: 'POST',
+            colNames: ['Meetings Number', 'Company name', 'Company head place', 'Date of meetings', 'Place of meetings', 'Is meeting online'],
+            colModel: [
+                { name: 'MeetId', index: 'MeetId', width: 50, sortable: true, align: 'center' },
+                { name: 'ComapnyName', index: 'ComapnyName', width: 150, sortable: true, align: 'center' },
+                { name: 'CompanyHeadQuaters', index: 'CompanyHeadQuaters', width: 150, sortable: true, align: 'center' },
+                { name: 'DateOfMeeting', index: 'DateOfMeeting', width: 150, sortable: true, align: 'center' },
+                { name: 'PlaceOfMeeting', index: 'PlaceOfMeeting', width: 150, sortable: true, align: 'center' },
+                { name: 'IsOnline', index: 'IsOnline', width: 100, sortable: true, align: 'center', formatter: FormatterIsOnline },
+            ],
+            jsonReader: {
+                root: "rows",
+                page: "page",
+                total: "total",
+                records: "records",
+                repeatitems: false,
+                Id : "0"
+            },
+            pager: '#pager',
+            viewrecords :true,
+            rowNum: 20,
+            rowList: [20, 40, 60, 80],
+            sortname: 'Id',
+            sortorder: "asc",
+            shrinkToFit: true,
+            subGrid:false,
+            width: 900,
+            height: 'auto',
+            caption: 'Next meetings',
+            subGridRowExpanded: function (subgridDivId, rowId) {
+                celValue = $("#meetingsTable").jqGrid('getCell', rowId, 'MeetId');
+            },
+        });
+
+    });
+</script>
