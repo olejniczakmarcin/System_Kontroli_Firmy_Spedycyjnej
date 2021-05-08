@@ -50,6 +50,12 @@ namespace SystemKontroliFirmySpedycyjnej
             bundles.Add(new StyleBundle("~/Scripts/jqplot").Include(
                 "~/Scripts/jqPlot/jquery.jqplot.min.css"));
 
+            bundles.Add(new ScriptBundle("~/bundles/jqmodal").Include(
+                "~/Scripts/jqModal.min.js"));
+
+            bundles.Add(new StyleBundle("~/Scripts/examples").Include(
+                "~/Scripts/examples/jqModal.css"));
+
         }
     }
 }

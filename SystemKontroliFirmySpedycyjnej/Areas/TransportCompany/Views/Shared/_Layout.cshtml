@@ -41,26 +41,25 @@
     <div class="menu-box">
         <strong>Menu</strong>
         <div class="position-button">
-            <button class="button-style"><a href="@Url.Action("MainWindow", "MainWindow", new { area = "TransportCompany" })">Home</a></button>
+            <button class="button-style" onclick="location.href='@Url.Action("MainWindow", "MainWindow", new { area = "TransportCompany" })'">Home</button>
         </div>
         <div class="position-button">
-            <button class="button-style"><a href="@Url.Action("MainWindow", "MainWindow", new { area = "TransportCompany" })">Cars</a></button>
+            <button class="button-style" onclick="location.href='@Url.Action("CompanyCars", "Cars", new { area = "TransportCompany" })'">Cars</button>
         </div>
         <div class="position-button">
-            <button class="button-style"><a href="@Url.Action("EmployeeInfo", "Employee", new { area = "TransportCompany" })" />Employee</button>
+            <button class="button-style" onclick="location.href='@Url.Action("EmployeeInfo", "Employee", new { area = "TransportCompany" })'">Employee</button>
         </div>
         <div class="position-button">
-            <button class="button-style"><a href="@Url.Action("MainWindow", "MainWindow", new { area = "TransportCompany" })" />Home page</button>
+            <button class="button-style" onclick="location.href='@Url.Action("EmployeeInfo", "Employee", new { area = "TransportCompany" })'">Home</button>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-    </div>
+    @RenderBody()
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/jqgrid")
     @Scripts.Render("~/bundles/jqplot")
+    @Scripts.Render("~/bundles/jqmodal")
     @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -1,0 +1,107 @@
+﻿
+@{
+    ViewBag.Title = "CompanyCars";
+}
+
+<head>
+    <link rel="stylesheet" type="text/css" media="screen" href="themes/jqModal.css" />
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqgrid")
+    @Scripts.Render("~/bundles/jqplot")
+    @Scripts.Render("~/bundles/jqmodal")
+</head>
+
+<div class="tab-position">
+    <table id="tableCar"></table>
+    <div id="pagerCar"></div>
+</div>
+
+<div id="dlgAddCar" style="display:none">
+    <div><input type="text" id="impCarName"/></div>
+    <div><input type="text" id="impMillage"/></div>
+    <div><input type="text" id="inpVehicleCon"/></div>
+    <div><input type="text" id="inpCurrRes"/></div>
+    <div><button>Save</button></div>
+</div>
+
+<style>
+    .tab-position{
+        position:absolute;
+        left:20%;
+        top:20%;
+    }
+</style>
+
+<script type="text/javascript">
+    function FormatterCurrentResearch(cellvalue, options, rowObject) {
+        var retval = cellvalue;
+        if (rowObject['CurrentResearch'] == true) {
+            return '<span class="cellWithoutBackground" style="background-color: green;">Actual</span>';
+        }
+        else {
+            return '<span class="cellWithoutBackground" style="background-color: red;">No Actual</span>';
+        }
+    }
+
+    $(function () {
+
+        $('#dlgAddCar').dialog({
+            autoOpen: false,
+            closeOnEscape: false,
+            position: 'center',
+            draggable: true,
+            width: '300',
+            height: 'auto',
+            resizable: false,
+            open: function () {
+                $('#dlgAddCar').css('overflow', 'hidden');
+            }
+        });
+        $("#tableCar").jqGrid({
+            url: '@Url.Action("GetDataToTable", "Cars", new { area = "TransportCompany" })',
+            datatype: 'json',
+            mtype: 'POST',
+            colNames: ['CarId', 'EmpId', 'Car name', 'Millage', 'Vehicle condition', 'Current research'],
+            colModel: [
+                { name: 'CarId', index: 'CarId', width: 10, sortable: true, align: 'center', hidden:true },
+                { name: 'EmpId', index: 'EmpId', width: 150, sortable: true, align: 'center', hidden:true },
+                { name: 'CarName', index: 'Name', width: 150, sortable: true, align: 'center' },
+                { name: 'Millage', index: 'Millage', width: 150, sortable: true, align: 'center' },
+                { name: 'VehicleCondition', index: 'VehicleCondition', width: 150, sortable: true, align: 'center' },
+                { name: 'CurrentResearch', index: 'CurrentResearch', width: 100, sortable: true, align: 'center', formatter: FormatterCurrentResearch },
+            ],
+            jsonReader: {
+                root: "rows",
+                page: "page",
+                total: "total",
+                records: "records",
+                repeatitems: false,
+                Id : "0"
+            },
+            viewrecords :true,
+            rowNum: 20,
+            rowList: [20, 40, 60, 80],
+            sortname: 'Id',
+            sortorder: "asc",
+            pager:'pagerCar',
+            shrinkToFit: true,
+            subGrid:false,
+            width: 870,
+            height: 'auto',
+            caption: 'Information about company cars',
+        });
+        $("#tableCar").navGrid('#pagerCar', { edit: false, add: false, del: false, search: false, refresh: false });
+        $("#tableCar").navButtonAdd("#pagerCar",
+            {
+                caption: "Add new car",
+                buttonicon: "ui-icon-plus",
+                title: "Add new car",
+                onClickButton: function () {
+                    alert('click');
+                    $('#dlgAddCar').dialog('open');
+                }
+            });
+    });
+</script>
+

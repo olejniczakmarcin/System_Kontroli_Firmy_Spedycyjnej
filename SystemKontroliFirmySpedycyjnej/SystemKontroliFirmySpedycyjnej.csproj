@@ -201,6 +201,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\TransportCompany\Controllers\CarsController.cs" />
     <Compile Include="Areas\TransportCompany\Controllers\EmployeeController.cs" />
     <Compile Include="Areas\TransportCompany\Controllers\MainWindowController.cs" />
     <Compile Include="Areas\TransportCompany\DAL\DataBaseCompany.cs" />
@@ -392,6 +393,7 @@
     <Content Include="Scripts\i18n\grid.locale-vi.js" />
     <Content Include="Areas\TransportCompany\Views\Employee\EmployeeInfo.cshtml" />
     <Content Include="Areas\TransportCompany\Views\Employee\SubGridEmployeeInfo.cshtml" />
+    <Content Include="Areas\TransportCompany\Views\Cars\CompanyCars.cshtml" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jqPlot\changes.txt" />
     <Content Include="Scripts\jqPlot\copyright.txt" />
@@ -476,11 +478,13 @@
     <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
     <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.6.0.min.map" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\jquery-ui-i18n.js" />
+    <Content Include="Scripts\jquery-ui-i18n.min.js" />
     <Content Include="Scripts\jquery.jqGrid.js" />
     <Content Include="Scripts\jquery.jqGrid.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
