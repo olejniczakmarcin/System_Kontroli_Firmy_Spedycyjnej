@@ -20,5 +20,6 @@ namespace SystemKontroliFirmySpedycyjnej.Areas.TransportCompany.Data
         public string PlaceOfResidence { get; set; }
         public string Gender { get; set; }
         public Nullable<int> Age { get; set; }
+        public Nullable<int> SectionId { get; set; }
     }
 }

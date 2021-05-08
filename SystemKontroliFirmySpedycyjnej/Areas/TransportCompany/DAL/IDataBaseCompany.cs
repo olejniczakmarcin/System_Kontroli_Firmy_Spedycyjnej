@@ -14,6 +14,7 @@ namespace SystemKontroliFirmySpedycyjnej.Areas.TransportCompany.DAL
         void AddNewEmpl(Employee newEmp);
         void UpdateEmpl(Employee thisEmp);
         void DeleteEmpl(Expression<Func<Employee, bool>> func);
+        IList<Employee> GetEmplByParameter(Expression<Func<Employee, bool>> func);
 
         IQueryable<EmployeeSection> SelectAllEmpSec();
         EmployeeSection SelectByIdEmpSec(Expression<Func<EmployeeSection, bool>> func);

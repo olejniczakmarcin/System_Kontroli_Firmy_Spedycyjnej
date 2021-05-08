@@ -4,12 +4,10 @@
 }
 
 <head>
-    <link rel="stylesheet" type="text/css" media="screen" href="themes/jqModal.css" />
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqgrid")
     @Scripts.Render("~/bundles/jqplot")
-    @Scripts.Render("~/bundles/jqmodal")
 </head>
 
 <div class="tab-position">
@@ -91,17 +89,6 @@
             height: 'auto',
             caption: 'Information about company cars',
         });
-        $("#tableCar").navGrid('#pagerCar', { edit: false, add: false, del: false, search: false, refresh: false });
-        $("#tableCar").navButtonAdd("#pagerCar",
-            {
-                caption: "Add new car",
-                buttonicon: "ui-icon-plus",
-                title: "Add new car",
-                onClickButton: function () {
-                    alert('click');
-                    $('#dlgAddCar').dialog('open');
-                }
-            });
     });
 </script>
 

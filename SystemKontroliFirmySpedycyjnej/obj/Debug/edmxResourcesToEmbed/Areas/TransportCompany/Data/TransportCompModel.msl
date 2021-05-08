@@ -16,6 +16,7 @@
     <EntitySetMapping Name="Employee">
       <EntityTypeMapping TypeName="FirmaSpedycyjnaModel.Employee">
         <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="SectionId" ColumnName="SectionId" />
           <ScalarProperty Name="EmpId" ColumnName="EmpId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Surname" ColumnName="Surname" />
@@ -29,7 +30,6 @@
       <EntityTypeMapping TypeName="FirmaSpedycyjnaModel.EmployeeSection">
         <MappingFragment StoreEntitySet="EmployeeSection">
           <ScalarProperty Name="SectionId" ColumnName="SectionId" />
-          <ScalarProperty Name="EmplId" ColumnName="EmplId" />
           <ScalarProperty Name="SectionName" ColumnName="SectionName" />
         </MappingFragment>
       </EntityTypeMapping>

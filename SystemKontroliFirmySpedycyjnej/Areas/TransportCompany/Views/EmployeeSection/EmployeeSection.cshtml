@@ -1,0 +1,43 @@
+﻿@model List<SystemKontroliFirmySpedycyjnej.Areas.TransportCompany.Model.EmployeeSection>
+@{
+    ViewBag.Title = "EmployeeSection";
+}
+
+<head>
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqgrid")
+    @Scripts.Render("~/bundles/jqplot")
+</head>
+<style>
+    .main{
+        position:absolute;
+        left:40%;
+        top:30%;
+        width:400px;
+        border: 2px solid blue;
+    }
+    .main-frame{
+        border: 2px solid red;
+        text-align:center;
+    }
+</style>
+<div class="main">
+    @foreach (var item in Model)
+    {
+        <div class="main-frame">
+            @item.SectionName
+        </div>
+        if (item.listEmp != null)
+        {
+            foreach (var item2 in item.listEmp)
+            {
+                <div>
+                    @item2.Name
+                    @item2.Surname
+                </div>
+            }
+        }
+    }
+</div>
+

@@ -34,13 +34,13 @@
           <Property Name="PlaceOfResidence" Type="varchar" MaxLength="50" />
           <Property Name="Gender" Type="varchar" MaxLength="50" />
           <Property Name="Age" Type="int" />
+          <Property Name="SectionId" Type="int" />
         </EntityType>
         <EntityType Name="EmployeeSection">
           <Key>
             <PropertyRef Name="SectionId" />
           </Key>
           <Property Name="SectionId" Type="int" Nullable="false" />
-          <Property Name="EmplId" Type="int" Nullable="false" />
           <Property Name="SectionName" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -106,13 +106,13 @@ warning 6002: The table/view 'FirmaSpedycyjna.dbo.Meetings' does not have a prim
           <Property Name="PlaceOfResidence" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Age" Type="Int32" />
+          <Property Name="SectionId" Type="Int32" />
         </EntityType>
         <EntityType Name="EmployeeSection">
           <Key>
             <PropertyRef Name="SectionId" />
           </Key>
           <Property Name="SectionId" Type="Int32" Nullable="false" />
-          <Property Name="EmplId" Type="Int32" Nullable="false" />
           <Property Name="SectionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="FirmaSpedycyjnaEntities" annotation:LazyLoadingEnabled="true">
@@ -172,6 +172,7 @@ warning 6002: The table/view 'FirmaSpedycyjna.dbo.Meetings' does not have a prim
           <EntitySetMapping Name="Employee">
             <EntityTypeMapping TypeName="FirmaSpedycyjnaModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="SectionId" ColumnName="SectionId" />
                 <ScalarProperty Name="EmpId" ColumnName="EmpId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
@@ -185,7 +186,6 @@ warning 6002: The table/view 'FirmaSpedycyjna.dbo.Meetings' does not have a prim
             <EntityTypeMapping TypeName="FirmaSpedycyjnaModel.EmployeeSection">
               <MappingFragment StoreEntitySet="EmployeeSection">
                 <ScalarProperty Name="SectionId" ColumnName="SectionId" />
-                <ScalarProperty Name="EmplId" ColumnName="EmplId" />
                 <ScalarProperty Name="SectionName" ColumnName="SectionName" />
               </MappingFragment>
             </EntityTypeMapping>

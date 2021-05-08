@@ -29,13 +29,13 @@
     <Property Name="PlaceOfResidence" Type="varchar" MaxLength="50" />
     <Property Name="Gender" Type="varchar" MaxLength="50" />
     <Property Name="Age" Type="int" />
+    <Property Name="SectionId" Type="int" />
   </EntityType>
   <EntityType Name="EmployeeSection">
     <Key>
       <PropertyRef Name="SectionId" />
     </Key>
     <Property Name="SectionId" Type="int" Nullable="false" />
-    <Property Name="EmplId" Type="int" Nullable="false" />
     <Property Name="SectionName" Type="varchar" MaxLength="50" />
   </EntityType>
   <!--Errors Found During Generation:

@@ -15,7 +15,6 @@ namespace SystemKontroliFirmySpedycyjnej.Areas.TransportCompany.Data
     public partial class EmployeeSection
     {
         public int SectionId { get; set; }
-        public int EmplId { get; set; }
         public string SectionName { get; set; }
     }
 }

@@ -47,6 +47,11 @@ namespace SystemKontroliFirmySpedycyjnej.Areas.TransportCompany.DAL
             SaveChanges();
         }
 
+        public IList<Employee> GetEmplByParameter(Expression<Func<Employee, bool>> func)
+        {
+            return companyEmpl.Where(func).ToList();
+        }
+
         public void DeleteEmpl(Expression<Func<Employee, bool>> func)
         {
             Employee tmp = SelectByIdEmpl(func);

@@ -21,13 +21,13 @@
     <Property Name="PlaceOfResidence" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Age" Type="Int32" />
+    <Property Name="SectionId" Type="Int32" />
   </EntityType>
   <EntityType Name="EmployeeSection">
     <Key>
       <PropertyRef Name="SectionId" />
     </Key>
     <Property Name="SectionId" Type="Int32" Nullable="false" />
-    <Property Name="EmplId" Type="Int32" Nullable="false" />
     <Property Name="SectionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityContainer Name="FirmaSpedycyjnaEntities" annotation:LazyLoadingEnabled="true">

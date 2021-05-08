@@ -203,6 +203,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\TransportCompany\Controllers\CarsController.cs" />
     <Compile Include="Areas\TransportCompany\Controllers\EmployeeController.cs" />
+    <Compile Include="Areas\TransportCompany\Controllers\EmployeeSectionController.cs" />
     <Compile Include="Areas\TransportCompany\Controllers\MainWindowController.cs" />
     <Compile Include="Areas\TransportCompany\DAL\DataBaseCompany.cs" />
     <Compile Include="Areas\TransportCompany\DAL\IDataBaseCompany.cs" />
@@ -241,6 +242,7 @@
     </Compile>
     <Compile Include="Areas\TransportCompany\Model\CarGridModel.cs" />
     <Compile Include="Areas\TransportCompany\Model\EmployeeGridModel.cs" />
+    <Compile Include="Areas\TransportCompany\Model\EmployeeSection.cs" />
     <Compile Include="Areas\TransportCompany\Model\EmployModel.cs" />
     <Compile Include="Areas\TransportCompany\Model\GridDataModel.cs" />
     <Compile Include="Areas\TransportCompany\Model\MeetingsModel.cs" />
@@ -394,6 +396,7 @@
     <Content Include="Areas\TransportCompany\Views\Employee\EmployeeInfo.cshtml" />
     <Content Include="Areas\TransportCompany\Views\Employee\SubGridEmployeeInfo.cshtml" />
     <Content Include="Areas\TransportCompany\Views\Cars\CompanyCars.cshtml" />
+    <Content Include="Areas\TransportCompany\Views\EmployeeSection\EmployeeSection.cshtml" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jqPlot\changes.txt" />
     <Content Include="Scripts\jqPlot\copyright.txt" />
