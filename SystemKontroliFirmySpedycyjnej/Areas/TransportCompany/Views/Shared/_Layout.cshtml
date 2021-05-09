@@ -17,7 +17,7 @@
         .menu-box {
             position: absolute;
             width: 200px;
-            height: 350px;
+            height: 380px;
             margin-top: 100px;
             background-color: rgb(255,235,205);
             overflow: hidden;
@@ -25,10 +25,11 @@
         }
 
         .button-style {
-            padding: 12px 40px;
+            padding: 22px 85px;
             font-size: 16px;
             background-color: #0094ff;
             border: 3px solid #4CAF50;
+            width:85px;
         }
 
         .position-button {
@@ -41,16 +42,16 @@
     <div class="menu-box">
         <strong>Menu</strong>
         <div class="position-button">
-            <button class="button-style" onclick="location.href='@Url.Action("MainWindow", "MainWindow", new { area = "TransportCompany" })'">Home</button>
+            <button class="button-style" onclick="location.href='@Url.Action("MainWindow", "MainWindow", new { area = "TransportCompany" })'"><span style="margin-left:-20px;">Home</span></button>
         </div>
         <div class="position-button">
-            <button class="button-style" onclick="location.href='@Url.Action("CompanyCars", "Cars", new { area = "TransportCompany" })'">Cars</button>
+            <button class="button-style" onclick="location.href='@Url.Action("CompanyCars", "Cars", new { area = "TransportCompany" })'"><span style="margin-left:-20px;">Cars</span></button>
         </div>
         <div class="position-button">
-            <button class="button-style" onclick="location.href='@Url.Action("EmployeeInfo", "Employee", new { area = "TransportCompany" })'">Employee</button>
+            <button class="button-style" onclick="location.href='@Url.Action("EmployeeInfo", "Employee", new { area = "TransportCompany" })'"><span style="margin-left:-34px;">Employee</span></button>
         </div>
         <div class="position-button">
-            <button class="button-style" onclick="location.href='@Url.Action("EmployeeSection", "EmployeeSection", new { area = "TransportCompany" })'">Company departaments</button>
+            <button class="button-style" onclick="location.href='@Url.Action("EmployeeSection", "EmployeeSection", new { area = "TransportCompany" })'"><div><span style="margin-left:-44px;">Company</span></div><div><span style="margin-left:-54px;">departaments</span></div></button>
         </div>
     </div>
     @RenderBody()
@@ -59,7 +60,6 @@
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/jqgrid")
     @Scripts.Render("~/bundles/jqplot")
-    @Scripts.Render("~/bundles/jqmodal")
     @RenderSection("scripts", required: false)
 </body>
 </html>

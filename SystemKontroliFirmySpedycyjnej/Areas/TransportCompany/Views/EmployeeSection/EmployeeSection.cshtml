@@ -12,14 +12,27 @@
 <style>
     .main{
         position:absolute;
-        left:40%;
-        top:30%;
+        left:38%;
+        top:15%;
         width:400px;
-        border: 2px solid blue;
+        border: 2px solid #1be235;
+        background-color:#e8d859;
+        margin-top:2px;
+        margin-bottom:4px;
     }
     .main-frame{
         border: 2px solid red;
         text-align:center;
+        font-weight:bold;
+        font-size:16px;
+        margin-top:2px;
+        margin-bottom:2px;
+        background-color:#9595e5
+    }
+    .elemnts{
+        margin-top:1px;
+        margin-bottom:1px;
+        margin-left:4px;
     }
 </style>
 <div class="main">
@@ -32,10 +45,13 @@
         {
             foreach (var item2 in item.listEmp)
             {
-                <div>
-                    @item2.Name
-                    @item2.Surname
-                </div>
+                if (item.secId == item2.id.Value)
+                {
+                    <div class="elemnts">
+                        @item2.Name
+                        @item2.Surname
+                    </div>
+                }
             }
         }
     }

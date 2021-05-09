@@ -28,18 +28,22 @@ namespace SystemKontroliFirmySpedycyjnej.Areas.TransportCompany.Controllers
             foreach(var item in data)
             {
                 var tmp = _dataBaseCompany.GetEmplByParameter(x => x.SectionId == item.SectionId);
+
                 foreach(var item2 in tmp)
                 {
                     emp2.Add(new EmployeeModel2
                     {
+                        id = item2.SectionId.Value,
                         Name = item2.Name,
                         Surname = item2.Surname
                     });
                 }
                 tmpList.Add(new EmployeeSection
                 {
+                    secId = item.SectionId,
                     SectionName = item.SectionName,
                     listEmp = tmp.Any() ? emp2 : null
+
                 });
             }
             return View("EmployeeSection",tmpList);
