@@ -22,6 +22,7 @@ namespace SystemKontroliFirmySpedycyjnej.Areas.TransportCompany.Controllers
         }
         public ActionResult EmployeeSection()
         {
+            ViewData["data"] = string.Format("Today is {0}", DateTime.Now.Date.ToString("yyyy-MM-dd"));
             var data = _dataBaseCompany.SelectAllEmpSec();
             List<EmployeeSection> tmpList = new List<EmployeeSection>();
             List<EmployeeModel2> emp2 = new List<EmployeeModel2>();

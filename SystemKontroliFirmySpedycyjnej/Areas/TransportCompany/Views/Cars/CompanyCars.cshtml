@@ -10,6 +10,7 @@
     @Scripts.Render("~/bundles/jqplot")
 </head>
 
+<div class="text-info">@ViewData["data"]</div>
 <div class="tab-position">
     <table id="tableCar"></table>
     <div id="pagerCar"></div>
@@ -28,6 +29,14 @@
         position:absolute;
         left:20%;
         top:20%;
+    }
+    .text-info {
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        color: #178fe5;
+        font-size: 24px;
+        font-weight: bold;
     }
 </style>
 

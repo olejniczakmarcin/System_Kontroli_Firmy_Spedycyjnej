@@ -23,6 +23,7 @@ namespace SystemKontroliFirmySpedycyjnej.Areas.TransportCompany.Controllers
         }
         public ActionResult CompanyCars()
         {
+            ViewData["data"] = string.Format("Today is {0}", DateTime.Now.Date.ToString("yyyy-MM-dd"));
             return View();
         }
 
